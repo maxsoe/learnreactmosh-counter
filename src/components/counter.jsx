@@ -5,21 +5,28 @@ import React, {
 
 class Counter extends Component {
   state = {
-    count: 1
+    count: 0,
+    imageUrl: 'https://picsum.photos/200'
   };
+
+  styles = {
+    fontSize: 16,
+    fontWeight: 'bold'
+  }
 
   render() {
     return (
       <Fragment>
-        <span>{this.formatCount()}</span>
-        <button> Increment </button>
+        <img src={this.state.imageUrl} alt="" />
+        <span style={this.styles} className="badge badge-primary m-2">{this.formatCount()}</span>
+        <button style={{fontSize:20}} className="btn btn-secondary btn-sm"> Increment </button>
       </Fragment>
     );
   }
 
   formatCount() {
     const { count } = this.state;
-    const x = <h1>Zero</h1>;
+    const x = <p>Zero</p>;
     return count === 0 ? x : count
   }
 }
