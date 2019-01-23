@@ -5,7 +5,7 @@ import React, {
 
 class Counter extends Component {
   state = {
-    count: 0,
+    count: 1,
     imageUrl: 'https://picsum.photos/200'
   };
 
@@ -18,10 +18,21 @@ class Counter extends Component {
     return (
       <Fragment>
         <img src={this.state.imageUrl} alt="" />
-        <span style={this.styles} className="badge badge-primary m-2">{this.formatCount()}</span>
+        <span
+          style={this.styles}
+          className={this.getBadgeClasses()}
+        >
+          {this.formatCount()}
+        </span>
         <button style={{fontSize:20}} className="btn btn-secondary btn-sm"> Increment </button>
       </Fragment>
     );
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-2 ";
+    classes += (this.state.count === 0) ? "badge-warning" : "badge-primary";
+    return classes;
   }
 
   formatCount() {
