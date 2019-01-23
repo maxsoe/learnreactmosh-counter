@@ -27,10 +27,16 @@ class Counter extends Component {
         </span>
         <button style={{fontSize:20}} className="btn btn-secondary btn-sm"> Increment </button>
         <ul>
-          {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}
+          {this.getListItems()}
         </ul>
       </Fragment>
     );
+  }
+
+  getListItems() {
+    const {tags} = this.state;
+    const returnTags = tags.map(tag => <li key={tag}>{tag}</li>);
+    return returnTags;
   }
 
   getBadgeClasses() {
