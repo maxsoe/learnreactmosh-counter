@@ -8,6 +8,11 @@ class Counter extends Component {
     tags: []
   };
 
+  // constructor() {
+  //   super();
+  //   this.handleIncrement = this.handleIncrement.bind(this);
+  // }
+
   styles = {
     fontSize: 16,
     fontWeight: "bold"
@@ -33,9 +38,9 @@ class Counter extends Component {
     );
   }
 
-  handleIncrement() {
-    console.log("increment clicked");
-  }
+  handleIncrement = () => {
+    console.log("increment clicked", this);
+  };
 
   renderTags() {
     const { tags } = this.state;
