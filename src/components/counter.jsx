@@ -20,9 +20,12 @@ class Counter extends Component {
         <span style={this.styles} className={this.getBadgeClasses()}>
           {this.formatCount()}
         </span>
-        <button style={{ fontSize: 20 }} className="btn btn-secondary btn-sm">
-          {" "}
-          Increment{" "}
+        <button
+          onClick={this.handleIncrement}
+          style={{ fontSize: 20 }}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
         </button>
         {this.renderTags()}
         {this.state.tags.length === 0 && <p>Please create a new tag</p>}
@@ -30,10 +33,20 @@ class Counter extends Component {
     );
   }
 
+  handleIncrement() {
+    console.log("increment clicked");
+  }
+
   renderTags() {
     const { tags } = this.state;
-    if (tags.length === 0) return (<p>There are no tags</p>);
-    return <ul>{tags.map(tag => <li key={tag}>{tag}</li>)}</ul>;
+    if (tags.length === 0) return <p>There are no tags</p>;
+    return (
+      <ul>
+        {tags.map(tag => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
+    );
   }
 
   getBadgeClasses() {
