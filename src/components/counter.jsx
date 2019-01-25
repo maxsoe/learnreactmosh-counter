@@ -4,8 +4,8 @@ class Counter extends Component {
   state = {
     count: 0,
     imageUrl: "https://picsum.photos/200",
-    // tags: ["tag1", "tag2", "tag3"]
-    tags: []
+    tags: ["tag1", "tag2", "tag3"]
+    // tags: []
   };
 
   // constructor() {
@@ -18,27 +18,8 @@ class Counter extends Component {
     fontWeight: "bold"
   };
 
-  render() {
-    return (
-      <Fragment>
-        <img src={this.state.imageUrl} alt="" />
-        <span style={this.styles} className={this.getBadgeClasses()}>
-          {this.formatCount()}
-        </span>
-        <button
-          onClick={this.handleIncrement}
-          style={{ fontSize: 20 }}
-          className="btn btn-secondary btn-sm"
-        >
-          Increment
-        </button>
-        {this.renderTags()}
-        {this.state.tags.length === 0 && <p>Please create a new tag</p>}
-      </Fragment>
-    );
-  }
-
-  handleIncrement = () => {
+  handleIncrement = product => {
+    console.log(product);
     this.setState({ count: this.state.count + 1 });
   };
 
@@ -64,6 +45,26 @@ class Counter extends Component {
     const { count } = this.state;
     const x = <p>Zero</p>;
     return count === 0 ? x : count;
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <img src={this.state.imageUrl} alt="" />
+        <span style={this.styles} className={this.getBadgeClasses()}>
+          {this.formatCount()}
+        </span>
+        <button
+          onClick={() => this.handleIncrement({ id: 1 })}
+          style={{ fontSize: 20 }}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
+        {this.renderTags()}
+        {this.state.tags.length === 0 && <p>Please create a new tag</p>}
+      </Fragment>
+    );
   }
 }
 
