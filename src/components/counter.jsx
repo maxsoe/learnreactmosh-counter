@@ -2,10 +2,10 @@ import React, { Component, Fragment } from "react";
 
 class Counter extends Component {
   state = {
-    value: this.props.value,
-    imageUrl: "https://picsum.photos/200",
+    value: this.props.value
+    // imageUrl: "https://picsum.photos/200",
     // tags: ["tag1", "tag2", "tag3"]
-    tags: []
+    // tags: []
   };
 
   // constructor() {
@@ -55,10 +55,15 @@ class Counter extends Component {
         </span>
         <button
           onClick={this.handleIncrement}
-          style={{ fontSize: 20 }}
           className="btn btn-secondary btn-sm"
         >
           Increment
+        </button>
+        <button
+          onClick={this.props.onDelete}
+          className="btn btn-danger btm-sm m-2"
+        >
+          Delete
         </button>
       </div>
     );
