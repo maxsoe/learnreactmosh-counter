@@ -31,6 +31,10 @@ class Counter extends Component {
     return value === 0 ? x : value;
   }
 
+  componentWillUnmount() {
+    console.log("Counter - unmount");
+  }
+
   render() {
     return (
       <div>
